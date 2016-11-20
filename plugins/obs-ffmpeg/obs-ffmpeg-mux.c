@@ -203,7 +203,13 @@ static void build_command_line(struct ffmpeg_muxer *stream, struct dstr *cmd)
 		add_video_encoder_params(stream, cmd, vencoder);
 
 	if (num_tracks) {
-		dstr_cat(cmd, "aac ");
+		if (strcmp(obs_encoder_get_codec(aencoders[0]), "OPUS") == 0) {
+			dstr_cat(cmd, "opus ");
+		}
+		else if (strcmp(obs_encoder_get_codec(aencoders[0]), "AAC") == 0) {
+			dstr_cat(cmd, "aac ");
+		}
+		
 
 		for (int i = 0; i < num_tracks; i++) {
 			add_audio_encoder_params(cmd, aencoders[i]);

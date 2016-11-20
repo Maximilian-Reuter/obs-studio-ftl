@@ -1047,8 +1047,10 @@ static int prune_premature_packets(struct obs_output *output)
 		if (diff > max_diff)
 			max_diff = diff;
 	}
+	blog(LOG_DEBUG, "Video / Audio Diff: %d", diff);
 
-	return diff > duration_usec ? max_idx + 1 : 0;
+	//return diff > duration_usec ? max_idx + 1 : 0;
+	return 0;
 }
 
 static void discard_to_idx(struct obs_output *output, size_t idx)
@@ -1062,7 +1064,7 @@ static void discard_to_idx(struct obs_output *output, size_t idx)
 	da_erase_range(output->interleaved_packets, 0, idx);
 }
 
-#define DEBUG_STARTING_PACKETS 0
+#define DEBUG_STARTING_PACKETS 1
 
 static bool prune_interleaved_packets(struct obs_output *output)
 {

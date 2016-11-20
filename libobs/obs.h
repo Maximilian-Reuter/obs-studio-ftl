@@ -1768,7 +1768,6 @@ static inline void obs_source_frame_destroy(struct obs_source_frame *frame)
 	}
 }
 
-
 #ifdef __cplusplus
 }
 #endif

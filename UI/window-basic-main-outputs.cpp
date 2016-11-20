@@ -1355,7 +1355,7 @@ bool AdvancedOutput::StartRecording()
 		UpdateStreamSettings();
 	}
 
-	OBSBasic::codecName = "AAC";
+	/*OBSBasic::codecName = "AAC";*/
 	for (int i = 0; i < 4; i++) {
 		char name[9];
 		sprintf(name, "adv_aac%d", i);
